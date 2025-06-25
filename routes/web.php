@@ -24,7 +24,7 @@ Route::get('/', function () {
 // Route::middleware('auth')->get('/home', [DashboardController::class, 'index'])->name('dashboard');
 
 // Buka bebas tanpa login
-Route::get('/home', [DashboardController::class, 'index'])->name('dashboard');
+Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
 // Route::get('/menu', [MenuController::class, 'index'])->name('menu');
 
 // Rute untuk Admin: Pengelolaan Menu
