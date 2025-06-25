@@ -24,7 +24,7 @@ class ContactController extends Controller
 
         // Simpan pesan ke dalam tabel pesan
         Pesan::create([
-            'user_id' => auth()->id(), // Jika menggunakan sistem login
+            'user_id' => auth()->check() ? auth()->id() : null, // Aman tanpa login
             'message' => $validated['message'],
         ]);
 

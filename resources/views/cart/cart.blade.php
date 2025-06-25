@@ -43,7 +43,7 @@
                         @foreach($cartItems as $item)
                             <tr>
                                 <td>
-                                    <img src="{{ asset('storage/'.$item->foto ?? 'storage/images/default-food.jpg') }}" alt="Food Photo" style="height: 100px; object-fit: cover;">
+                                    <img src="{{ asset('storage/'.$item->foto) }}" alt="Photo" style="height: 50px; object-fit: cover;">
                                 </td>
                                 <td>{{ $item->nama }}</td>
                                 <td>Rp{{ number_format($item->harga, 0, ',', '.') }}</td>

@@ -21,7 +21,11 @@ Route::get('/', function () {
 })->name('home');
 
 // Halaman Dashboard (setelah login)
-Route::middleware('auth')->get('/home', [DashboardController::class, 'index'])->name('dashboard');
+// Route::middleware('auth')->get('/home', [DashboardController::class, 'index'])->name('dashboard');
+
+// Buka bebas tanpa login
+Route::get('/home', [DashboardController::class, 'index'])->name('dashboard');
+// Route::get('/menu', [MenuController::class, 'index'])->name('menu');
 
 // Rute untuk Admin: Pengelolaan Menu
 Route::middleware(['auth', 'role:admin'])->group(function () {
@@ -64,8 +68,7 @@ Route::middleware('guest')->group(function () {
     Route::post('login', [AuthController::class, 'login'])->name('login.submit');
 });
 
-Route::middleware('auth')->get('/order', [OrderController::class, 'index'])->name('order');
-Route::middleware('auth')->get('/cart', [OrderController::class, 'index'])->name('cart');
+Route::get('/order', [OrderController::class, 'index'])->name('order');
 
 // Rute untuk Logout
 Route::middleware('auth')->post('logout', [AuthController::class, 'logout'])->name('logout');

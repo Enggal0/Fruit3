@@ -47,15 +47,11 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
 </head>
-<body style="
-        background: url('{{ asset('images/kopi.png') }}') no-repeat center center; 
-        background-size: cover; 
-        background-attachment: fixed;">
         
     <nav class="navbar navbar-expand-lg navbar-light py-3" style="background-color: #DCDCDC">
         <div class="container-fluid justify-content-between">
             <a class="navbar-brand" href="#">
-                <img src="{{ asset('images/logonavbar.png') }}" height="70" alt="logo">
+                <img src="{{ asset('images/navbar_logo.png') }}" height="70" alt="logo">
             </a>
             <button class="navbar-toggler btn btn-success" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -68,7 +64,7 @@
                             <a class="nav-link {{ request()->routeIs('home') ? 'active' : '' }} text-success fw-bold" href="{{ route('dashboard') }}" role="tab">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link {{ request()->routeIs('order') ? 'active' : '' }} text-success fw-bold" href="{{ route('order') }}" role="tab">Order</a>
+                            <a class="nav-link {{ request()->routeIs('order') ? 'active' : '' }} text-success fw-bold" href="{{ route('order') }}" role="tab">Etalase</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link {{ request()->routeIs('contact') ? 'active' : '' }} text-success fw-bold" href="{{ route('contact') }}" role="tab">Contact</a>
@@ -82,12 +78,20 @@
                         <li class="nav-item">
                             <a class="nav-link {{ request()->routeIs('history') ? 'active' : '' }} text-success fw-bold" href="{{ route('history') }}" role="tab">History</a>
                         </li>
+                        @guest
+                        <li class="nav-item">
+                            <a class="nav-link btn btn-success text-white px-4 ms-2 fw-bold" href="{{ route('login') }}" role="tab" style="border-radius: 20px; background-color: #28a745;">
+                                <i class="bi bi-box-arrow-in-right me-1"></i> Login
+                            </a>
+                        </li>
+                        @else
                         <div class="text-center me-4">
                             <form action="{{ route('logout') }}" method="POST">
                                 @csrf
                                 <button type="submit" class="btn btn-danger">Logout</button>
                             </form>
                         </div>
+                        @endguest
                     </ul>
                     <div class="position-relative">
                         <input class="form-control rounded-pill pe-5 fw-bold" type="search" placeholder="Search" aria-label="Search">
@@ -103,28 +107,32 @@
     </main>
 
     <!-- Footer -->
-    <footer>
-        <div class="container text-center">
-            <div class="row">
-                <div class="col-md-4">
-                    <h5>Contact Us</h5>
-                    <p>123 Cafe Street, Coffee City, 45678</p>
-                    <p>Phone: (123) 456-7890</p>
+        <footer>
+            <div class="container text-center">
+                <div class="row">
+                    <div class="col-md-4">
+                        <h5>Toko Kami</h5>
+                        <p>Fruit3, Jl. Segar No. 123, Bandar Buah, 35141</p>
+                        <p>Telepon: (0721) 123-456</p>
+                        <p>Email: info@fruit3.id</p>
+                    </div>
+                    <div class="col-md-4">
+                        <h5>Ikuti Kami</h5>
+                        <a href="#" class="text-white me-3"><i class="bi bi-facebook"></i></a>
+                        <a href="#" class="text-white me-3"><i class="bi bi-instagram"></i></a>
+                        <a href="#" class="text-white me-3"><i class="bi bi-twitter"></i></a>
+                    </div>
+                    <div class="col-md-4">
+                        <h5>Jam Operasional</h5>
+                        <p>Senin - Jumat: 07.00 - 17.00 WIB</p>
+                        <p>Sabtu - Minggu: 08.00 - 13.00 WIB</p>
+                    </div>
                 </div>
-                <div class="col-md-4">
-                    <h5>Follow Us</h5>
-                    <a href="#" class="text-white me-3"><i class="bi bi-facebook"></i></a>
-                    <a href="#" class="text-white me-3"><i class="bi bi-instagram"></i></a>
-                    <a href="#" class="text-white me-3"><i class="bi bi-twitter"></i></a>
-                </div>
-                <div class="col-md-4">
-                    <h5>Hours</h5>
-                    <p>Mon - Fri: 8:00 AM - 8:00 PM</p>
-                    <p>Sat - Sun: 9:00 AM - 10:00 PM</p>
-                </div>
+                <hr class="bg-light">
+                <p class="mb-0">&copy;{{date('Y')}} GalProd</p>
             </div>
-        </div>
-    </footer>
+        </footer>
+
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
